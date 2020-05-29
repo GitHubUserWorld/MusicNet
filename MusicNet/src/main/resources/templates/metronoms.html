@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Carousel templet of Mark Otto, Jacob Thornton, and Bootstrap contributors adapted by Jonathan Sierra">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <title>MusicNet</title>
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	    <script type="text/javascript">
+	        $(document).ready(function() {
+	            $('#submitPutMo').click(  function () {
+	                console.log("click");
+	                var sendNamePutMo = $('#namePutMo').val();
+	                var sendDescriptionPutMo = $('#descriptionPutMo').val();
+	                var sendFilePutMo = $('#filePutMo').val();
+	                var sendVelocityPutMo = $('#velocityPutMo').val();
+	
+	                $.ajax({
+	                    url: '/metronoms',    //Your api url
+	                    type: 'PUT',   //type is any HTTP method
+	                    data: {
+	                        name: sendNamePutMo,
+	                        description: sendDescriptionPutMo,
+	                        file: sendFilePutMo,
+	                        velocity: sendVelocityPutMo,
+	
+	                    },      //Data as js object
+	                    success: function (data) {
+	                    	window.location.reload();
+	                    }
+	                })
+	                ;
+	
+	            });
+	        });
+	    </script>
+	    <script type="text/javascript">
+	        $(document).ready(function() {
+	            $('#submitDelMo').click(  function () {
+	                console.log("click");
+	                var sendNameDelMo = $('#nameDelMo').val();
+	                var sendDescriptionDelMo = $('#descriptionDelMo').val();
+	                var sendFileDelMo = $('#fileDelMo').val();
+	                var sendVelocityDelMo = $('#velocityDelMo').val();
+	
+	                $.ajax({
+	                    url: '/metronoms',    //Your api url
+	                    type: 'DELETE',   //type is any HTTP method
+	                    data: {
+	                        name: sendNameDelMo,
+	                        description: sendDescriptionDelMo,
+	                        file: sendFileDelMo,
+	                        velocity: sendVelocityDelMo,
+	
+	                    },      //Data as js object
+	                    success: function (data) {
+	                    	window.location.reload();
+	                    }
+	                })
+	                ;
+	
+	            });
+	        });
+	    </script>
+    
+    <!-- Bootstrap core CSS -->
+<link href="../css/bootstrap.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="../css/carousel.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">MusicNet</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Inicio<span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Administración
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="musicalstyle">Estilos musicales</a>
+            <a class="dropdown-item" href="instruments">Instrumentos</a>
+            <a class="dropdown-item" href="metronoms">Metronomos</a>
+            <a class="dropdown-item" href="compastracks">Bases de compas</a>
+            <a class="dropdown-item" href="backingtracks">Bases de acompañamiento</a>
+        </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="courses">Cursos</a>
+        </li>
+      </ul>
+      <form class="form-inline mt-2 mt-md-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      </form>
+    </div>
+  </nav>
+</header>
+
+<main role="main">
+   
+    <div class="container">
+		<br>
+		<div class="card">
+		  <h5 class="card-header"><div th:text="${title}"></div></h5>
+		  <div class="card-body">
+		  
+			<nav>
+			  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+			    <a class="nav-item nav-link active" id="nav-list-tab" data-toggle="tab" href="#nav-list" role="tab" aria-controls="nav-list" aria-selected="true">Listar</a>
+			    <a class="nav-item nav-link" id="nav-add-tab" data-toggle="tab" href="#nav-add" role="tab" aria-controls="nav-add" aria-selected="false">Añadir</a>
+			    <a class="nav-item nav-link" id="nav-update-tab" data-toggle="tab" href="#nav-update" role="tab" aria-controls="nav-update" aria-selected="false">Actualizar</a>
+			    <a class="nav-item nav-link" id="nav-delete-tab" data-toggle="tab" href="#nav-delete" role="tab" aria-controls="nav-delete" aria-selected="false">Borrar</a>
+			  </div>
+			</nav>
+			<div class="tab-content" id="nav-tabContent">
+			  <div class="tab-pane fade show active" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab"><br>
+				<table class="table table-responsive">
+				  <thead class="thead-dark">
+					<tr>
+					<th scope="col">Nombre</th>
+					<th scope="col">Descripción</th>
+					<th scope="col">URL</th>
+					<th scope="col">Velocidad en BPM</th>
+				  	</tr>
+				  </thead>
+				  <tbody>
+				  	<tr th:each="me:${metronoms}">
+			        <th scope="row" th:text="${me.name}"></th>
+			      	<td scope="row" th:text="${me.description}"></td>
+			      	<td scope="row" th:text="${me.file}"></td>
+			      	<td scope="row" th:text="${me.velocity}"></td>
+			    	</tr>
+				  </tbody>
+				</table>
+			  </div>
+			  <div class="tab-pane fade" id="nav-add" role="tabpanel" aria-labelledby="nav-add-tab"><br>
+
+				<form th:action="@{/metronoms/}" th:object="${metronom}" method="post" enctype="multipart/form-data">
+				  <div class="form-group row">
+				    <label for="name" class="col-sm-2 col-form-label">Nombre</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="name" name="name">
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="description" class="col-sm-2 col-form-label">Descripción</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="description" name="description">
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="description" class="col-sm-2 col-form-label">URL</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="file" name="file">
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="description" class="col-sm-2 col-form-label">Velocidad</label>
+				    <div class="col-sm-6">
+				      <input type="number" class="form-control" id="velocity" name="velocity">
+				    </div>
+				  </div>
+						 
+						 
+				 <button class="btn btn-primary" type="submit">Añadir</button>
+				</form>
+
+			  </div>
+			  <div class="tab-pane fade" id="nav-update" role="tabpanel" aria-labelledby="nav-update-tab"><br>
+
+			    <form> 
+			      <div class="form-group row">
+			        <label class="col-sm-2 col-form-label" for="namePutMo">Nombre</label>
+			        <div class="col-sm-6">
+			          <input class="form-control" type="text" id="namePutMo" name="namePutMo" />
+			        </div>
+			     </div> 
+			     <div class="form-group row">
+			        <label class="col-sm-2 col-form-label" for="descriptionPutMo">Descripción</label>
+			        <div class="col-sm-6">
+			          <input class="form-control" type="text" name="descriptionPutMo" id="descriptionPutMo"/>
+					</div>     
+			      </div>
+			      <div class="form-group row">
+				    <label for="description" class="col-sm-2 col-form-label">URL</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="filePutMo" name="filePutMo">
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="description" class="col-sm-2 col-form-label">Velocidad</label>
+				    <div class="col-sm-6">
+				      <input type="number" class="form-control" id="velocityPutMo" name="velocityPutMo">
+				    </div>
+				  </div>
+			      <input class="btn btn-primary" id="submitPutMo" type="button"  value="Actualizar">    
+			    </form>
+
+			  </div>
+			  <div class="tab-pane fade" id="nav-delete" role="tabpanel" aria-labelledby="nav-delete-tab"><br>
+			  
+			    <form> 
+			      <div class="form-group row">
+			        <label class="col-sm-2 col-form-label" for="nameDelMo">Nombre</label>
+			        <div class="col-sm-6">
+			          <input class="form-control" type="text" id="nameDelMo" name="nameDelMo" />
+			        </div>
+			     </div> 
+			     <div class="form-group row">
+			        <label class="col-sm-2 col-form-label" for="descriptionDelMo">Descripción</label>
+			        <div class="col-sm-6">
+			          <input class="form-control" type="text" name="descriptionDelMo" id="descriptionDelMo"/>
+					</div>     
+			      </div>
+			      <div class="form-group row">
+				    <label for="description" class="col-sm-2 col-form-label">URL</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="fileDelMo" name="fileDelMo">
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="description" class="col-sm-2 col-form-label">Velocidad</label>
+				    <div class="col-sm-6">
+				      <input type="number" class="form-control" id="velocityDelMo" name="velocityDelMo">
+				    </div>
+				  </div>
+			      <input class="btn btn-primary" id="submitDelMo" type="button"  value="Borrar">    
+			    </form>
+			  
+			  </div>
+			</div>
+
+
+		  </div>
+		</div>	
+
+
+	</div>
+    <br> 
+  <!-- FOOTER -->
+  <footer class="container">
+    <p class="float-right"><a href="#">Volver arriba</a></p>
+    <p>&copy; 2017-2020 Company, Inc. &middot; <a href="#">Privacidad</a> &middot; <a href="#">Terminos</a></p>
+  </footer>
+</main>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.2.1.min.js"><\/script>')</script><script src="../js/bootstrap.bundle.js"></script></body>
+</html>

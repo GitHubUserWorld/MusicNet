@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#submitPut').click(  function () {
+                console.log("click");
+                var sendName = $('#name').val();
+                var sendDescription = $('#description').val();
+
+                $.ajax({
+                    url: '/musicalstyle',    //Your api url
+                    type: 'PUT',   //type is any HTTP method
+                    data: {
+                        name: sendName,
+                        description: sendDescription,
+                        
+                    },      //Data as js object
+                    success: function () {
+                    }
+                })
+                ;
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <form> 
+        <label for="name">Nombre</label>
+        <input type="text" id="name"  />
+        <label for="description">Descripción</label>
+        <input type="text" name="description" id="description"/>
+        <input id="submit" type="button"  value="SubmitDelete">
+        
+    </form>
+</body>
+</html>

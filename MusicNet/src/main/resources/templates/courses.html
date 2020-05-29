@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Carousel templet of Mark Otto, Jacob Thornton, and Bootstrap contributors adapted by Jonathan Sierra">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <title>MusicNet</title>
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	    <script type="text/javascript">
+	        $(document).ready(function() {
+	            $('#submitPutC').click(  function () {
+	                console.log("click");
+	                var sendIdPutC = $('#idPutC').val();
+	                var sendDescriptionPutC = $('#descriptionPutC').val();
+	                var sendInstrumentPutC = $('#instrumentPutC').val();
+	                var sendDifficultyPutC = $('#difficultyPutC').val();
+	                var sendHoursPutC = $('#hoursPutC').val();
+	                var sendStudentContactPutC = $('#studentContactPutC').val();
+	                var sendTeacherContactPutC = $('#teacherContactPutC').val();
+	                var sendLenguagePutC = $('#lenguagePutC').val();
+	                var sendEmailPutC = $('#emailPutC').val();
+	                var sendStylePutC = $('#stylePutC').val();
+	                
+	                $.ajax({
+	                    url: '/courses',    //Your api url
+	                    type: 'PUT',   //type is any HTTP method
+	                    data: {
+	                    	id: sendIdPutC,
+	                        description: sendDescriptionPutC,
+	                        instrumentname: sendInstrumentPutC,
+	                        difficulty: sendDifficultyPutC,
+	                        hours: sendHoursPutC,
+	                        studentcontact: sendStudentContactPutC,
+	                        teachercontact: sendTeacherContactPutC,
+	                        lenguage: sendLenguagePutC,
+	                        emailaddressteacher: sendEmailPutC,
+	                        stylename: sendStylePutC,
+	                        
+	
+	                    },      //Data as js object
+	                    success: function (data) {
+	                    	window.location.reload();
+	                    }
+	                })
+	                ;
+	
+	            });
+	        });
+	    </script>
+	    <script type="text/javascript">
+	        $(document).ready(function() {
+	            $('#submitDelC').click(  function () {
+	                console.log("click");
+	                var sendIdDelC = $('#idDelC').val();
+	                var sendDescriptionDelC = $('#descriptionDelC').val();
+	                var sendInstrumentDelC = $('#instrumentDelC').val();
+	                var sendDifficultyDelC = $('#difficultyDelC').val();
+	                var sendHoursDelC = $('#hoursDelC').val();
+	                var sendStudentContactDelC = $('#studentContactDelC').val();
+	                var sendTeacherContactDelC = $('#teacherContactDelC').val();
+	                var sendLenguageDelC = $('#lenguageDelC').val();
+	                var sendEmailDelC = $('#emailDelC').val();
+	                var sendStyleDelC = $('#styleDelC').val();
+	                
+	                $.ajax({
+	                    url: '/courses',    //Your api url
+	                    type: 'DELETE',   //type is any HTTP method
+	                    data: {
+	                    	id: sendIdDelC,
+	                        description: sendDescriptionDelC,
+	                        instrumentname: sendInstrumentDelC,
+	                        difficulty: sendDifficultyDelC,
+	                        hours: sendHoursDelC,
+	                        studentcontact: sendStudentContactDelC,
+	                        teachercontact: sendTeacherContactDelC,
+	                        lenguage: sendLenguageDelC,
+	                        emailaddressteacher: sendEmailDelC,
+	                        stylename: sendStyleDelC,
+	                        
+	
+	                    },      //Data as js object
+	                    success: function (data) {
+	                    	window.location.reload();
+	                    }
+	                })
+	                ;
+	
+	            });
+	        });
+	    </script>
+
+
+    <!-- Bootstrap core CSS -->
+<link href="../css/bootstrap.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="../css/carousel.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">MusicNet</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Inicio<span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Administración
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/musicalstyle">Estilos musicales</a>
+            <a class="dropdown-item" href="/instruments">Instrumentos</a>
+            <a class="dropdown-item" href="/metronoms">Metronomos</a>
+            <a class="dropdown-item" href="/compastracks">Bases de compas</a>
+            <a class="dropdown-item" href="/backingtracks">Bases de acompañamiento</a>
+        </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/courses">Cursos</a>
+        </li>
+      </ul>
+      <form class="form-inline mt-2 mt-md-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      </form>
+    </div>
+  </nav>
+</header>
+
+<main role="main">
+   
+    <div class="container">
+		<br>
+		<div class="card">
+		  <h5 class="card-header"><div th:text="${title}"></div></h5>
+		  <div class="card-body">
+		  
+			<nav>
+			  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+			    <a class="nav-item nav-link active" id="nav-list-tab" data-toggle="tab" href="#nav-list" role="tab" aria-controls="nav-list" aria-selected="true">Listar</a>
+			    <a class="nav-item nav-link" id="nav-add-tab" data-toggle="tab" href="#nav-add" role="tab" aria-controls="nav-add" aria-selected="false">Añadir</a>
+			    <a class="nav-item nav-link" id="nav-update-tab" data-toggle="tab" href="#nav-update" role="tab" aria-controls="nav-update" aria-selected="false">Actualizar</a>
+			    <a class="nav-item nav-link" id="nav-delete-tab" data-toggle="tab" href="#nav-delete" role="tab" aria-controls="nav-delete" aria-selected="false">Borrar</a>
+			  </div>
+			</nav>
+			<div class="tab-content" id="nav-tabContent">
+			  <div class="tab-pane fade show active" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab"><br>
+				<table class="table table-responsive">
+				  <thead class="thead-dark">
+					<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Descripción</th>
+					<th scope="col">Instrumento</th>
+					<th scope="col">Dificultad</th>
+					<th scope="col">Carga horaria</th>
+				    <th scope="col">Contacto estudiantes</th>
+				    <th scope="col">Contacto profesor</th>
+				    <th scope="col">Idioma</th>
+				    <th scope="col">Estilo</th>
+				    <th scope="col">Email</th>
+				  	</tr>
+				  </thead>
+				  <tbody>
+				  	<tr th:each="co:${courses}">
+			        <th scope="row" th:text="${co.id}"></th>
+			      	<td th:text="${co.description}"></td>
+			      	<td th:text="${co.instrumentname}"></td>
+			      	<td th:text="${co.difficulty}"></td>
+			      	<td th:text="${co.hours}"></td>
+			      	<td th:text="${co.studentcontact}"></td>
+			      	<td th:text="${co.teachercontact}"></td>
+			      	<td th:text="${co.lenguage}"></td>
+			      	<td th:text="${co.stylename}"></td>
+			      	<td th:text="${co.emailaddressteacher}"></td>
+			    	</tr>
+				  </tbody>
+				</table>
+			  </div>
+			  <div class="tab-pane fade" id="nav-add" role="tabpanel" aria-labelledby="nav-add-tab"><br>
+
+				<div class="row">
+				  <div class="col-3">
+				    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+				      <a class="nav-link active" id="v-pills-details1-tab" data-toggle="pill" href="#v-pills-details1" role="tab" aria-controls="v-pills-details1" aria-selected="true">Detalles</a>
+				      <a class="nav-link" id="v-pills-videos1-tab" data-toggle="pill" href="#v-pills-videos1" role="tab" aria-controls="v-pills-videos1" aria-selected="false">Videos</a>
+				      <a class="nav-link" id="v-pills-metronom1-tab" data-toggle="pill" href="#v-pills-metronom1" role="tab" aria-controls="v-pills-metronoms1" aria-selected="false">Metronomos</a>
+				      <a class="nav-link" id="v-pills-compastrack1-tab" data-toggle="pill" href="#v-pills-compastrack1" role="tab" aria-controls="v-pills-compastrack1" aria-selected="false">B. ritmicas</a>
+				      <a class="nav-link" id="v-pills-backtrack1-tab" data-toggle="pill" href="#v-pills-backtrack1" role="tab" aria-controls="v-pills-backtrack1" aria-selected="false">B. acompañamiento</a>
+				    </div>
+				  </div>
+				  <div class="col-9">
+				    <div class="tab-content" id="v-pills-tabContent">
+				      <div class="tab-pane fade show active" id="v-pills-details1" role="tabpanel" aria-labelledby="v-pills-details1-tab">
+
+						<form th:action="@{/courses}" th:object="${course}" method="post" enctype="multipart/form-data">
+						  <div class="form-group row">
+						    <label for="id" class="col-sm-2 col-form-label">Id</label>
+						    <div class="col-sm-10">
+						      <input type="number" class="form-control" id="id" name="id">
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="description" class="col-sm-2 col-form-label">Descripción</label>
+						    <div class="col-sm-10">
+						      <input type="descriptionPutC" class="form-control" id="description" name="description">
+						    </div>
+						  </div>
+
+						  <div class="form-group row">
+						    <label for="instrumentname" class="col-sm-2 col-form-label">Instrumento</label>
+						    <div class="col-sm-10">
+						    <select id="instrumentname" name="instrumentname" class="form-control">
+						          <option selected>Elige...</option>
+						          <option>Guitarra</option>
+						          <option>Bajo</option>
+						          <option>Bateria</option>
+						          <option>Violin</option>
+						        </select>
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="difficulty" class="col-sm-2 col-form-label">Dificultad</label>
+						    <div class="col-sm-10">
+						     <select id="difficulty" name="difficulty" class="form-control">
+						          <option selected>Elige...</option>
+						          <option>N. Experto</option>
+						          <option>N. Alto</option>
+						          <option>N. Medio</option>
+						          <option>N. Bajo</option>
+						          <option>N. Inicio</option>
+						     </select>
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="hours" class="col-sm-2 col-form-label">Carga horaria</label>
+						    <div class="col-sm-10">
+						      <input type="number" class="form-control" id="hours" name="hours">
+						    </div>
+						  </div>
+						  <fieldset class="form-group">
+						    <div class="row">
+						      <legend class="col-form-label col-sm-10 pt-0">¿Quieres que los alumnos se puedan comunicar entre ellos via email?</legend>
+						      <div class="col-sm-2">
+						        <div class="form-check">
+						          <input class="form-check-input" type="radio" name="studentcontact" id="studentcontact" value="True" checked>
+						          <label class="form-check-label" for="studentcontact">
+						            Si
+						          </label>
+						        </div>
+						        <div class="form-check">
+						          <input class="form-check-input" type="radio" name="studentcontact" id="studentcontact" value="False">
+						          <label class="form-check-label" for="studentcontact">
+						            No
+						          </label>
+						        </div>
+						      </div>
+						    </div>
+						  </fieldset>
+						  <fieldset class="form-group">
+						    <div class="row">
+						      <legend class="col-form-label col-sm-10 pt-0">¿Quieres que los alumnos se puedan comunicar contigo via email?</legend>
+						      <div class="col-sm-2">
+						        <div class="form-check">
+						          <input class="form-check-input" type="radio" name="teachercontact" id="teachercontact" value="True" checked>
+						          <label class="form-check-label" for="teachercontact">
+						            Si
+						          </label>
+						        </div>
+						        <div class="form-check">
+						          <input class="form-check-input" type="radio" name="teachercontact" id="teachercontact" value="False">
+						          <label class="form-check-label" for="teachercontact">
+						            No
+						          </label>
+						        </div>
+						      </div>
+						    </div>
+						  </fieldset>
+						  <div class="form-group row">
+						    <label for="lenguage" class="col-sm-2 col-form-label">Idioma</label>
+						    <div class="col-sm-10">
+						        <select id="lenguage" name="lenguage"class="form-control">
+						          <option selected>Elige...</option>
+						          <option>Español</option>
+						          <option>Ingles</option>
+						          <option>Frances</option>
+						          <option>Portuges</option>
+						          <option>Aleman</option>
+						        </select>
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="emailaddressteacher" class="col-sm-2 col-form-label">Email</label>
+						    <div class="col-sm-10">
+						      <input type="emailaddressteacher" class="form-control" id="emailaddressteacher" name="emailaddressteacher">
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="stylename" class="col-sm-2 col-form-label">Estilo</label>
+						    <div class="col-sm-10">
+						        <select id="stylename" name="stylename" class="form-control">
+						          <option selected>Elige...</option>
+						          <option>Flamenco</option>
+						          <option>Jazz</option>
+						          <option>Samba</option>
+						          <option>Sartaneio</option>
+						          <option>Copla</option>
+						        </select>
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <div class="col-sm-10">
+						     <button class="btn btn-primary" type="submit">Añadir</button>
+						    </div>
+						  </div>
+						</form>
+
+					  </div>
+				      <div class="tab-pane fade" id="v-pills-videos1" role="tabpanel" aria-labelledby="v-pills-videos1-tab">
+
+
+						<form th:action="@{/files/}" th:object="${filename}" method="post" enctype="multipart/form-data">	
+							<div class="input-group mb-3">
+							  <input type="text" name="file" id="file">
+							  <div class="custom-file">
+							    <input type="file" class="custom-file-input" name="file" id="file">
+							    <label class="custom-file-label" for="file" aria-describedby="inputGroupFileAddon02">Elige archivo</label>
+							  </div>
+							  <div class="input-group-append">
+							    <input class="input-group-text" type="submit" value="Subir" />
+							  </div>
+							</div>
+						</form>
+
+					  </div>
+					<div class="tab-pane fade" id="v-pills-metronom1" role="tabpanel" aria-labelledby="v-pills-metronom1-tab">1</div>
+					<div class="tab-pane fade" id="v-pills-compastrack1" role="tabpanel" aria-labelledby="v-pills-compastrack1-tab">2</div>
+					<div class="tab-pane fade" id="v-pills-backtrack1" role="tabpanel" aria-labelledby="v-pills-backtrack1-tab">3</div>	
+					
+				    </div>
+				  </div>
+				</div>
+
+			  </div>
+			  <div class="tab-pane fade" id="nav-update" role="tabpanel" aria-labelledby="nav-update-tab"><br>
+
+				<div class="row">
+				  <div class="col-3">
+				    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+				      <a class="nav-link active" id="v-pills-details2-tab" data-toggle="pill" href="#v-pills-details2" role="tab" aria-controls="v-pills-details2" aria-selected="true">Detalles</a>
+				      <!-- <a class="nav-link" id="v-pills-videos2-tab" data-toggle="pill" href="#v-pills-videos2" role="tab" aria-controls="v-pills-videos2" aria-selected="false">Videos</a> -->
+				    </div>
+				  </div>
+				  <div class="col-9">
+				    <div class="tab-content" id="v-pills-tabContent">
+				      <div class="tab-pane fade show active" id="v-pills-details2" role="tabpanel" aria-labelledby="v-pills-details2-tab">
+
+						<form>
+						  <div class="form-group row">
+						    <label for="idPutC" class="col-sm-2 col-form-label">Id</label>
+						    <div class="col-sm-10">
+						      <input type="number" class="form-control" id="idPutC">
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="descriptionPutC" class="col-sm-2 col-form-label">Descripción</label>
+						    <div class="col-sm-10">
+						      <input type="descriptionPutC" class="form-control" id="descriptionPutC">
+						    </div>
+						  </div>
+
+						  <div class="form-group row">
+						    <label for="instrumentPutC" class="col-sm-2 col-form-label">Instrumento</label>
+						    <div class="col-sm-10">
+						    <select id="instrumentPutC" name="instrumentPutC" class="form-control">
+						          <option selected>Elige...</option>
+						          <option>Guitarra</option>
+						          <option>Bajo</option>
+						          <option>Bateria</option>
+						          <option>Violin</option>-
+						        </select>
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="difficultyPutC" class="col-sm-2 col-form-label">Dificultad</label>
+						    <div class="col-sm-10">
+						     <select id="difficultyPutC" name="difficultyPutC" class="form-control">
+						          <option selected>Elige...</option>
+						          <option>N. Experto</option>
+						          <option>N. Alto</option>
+						          <option>N. Medio</option>
+						          <option>N. Bajo</option>
+						          <option>N. Inicio</option>
+						     </select>
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="hoursPutC" class="col-sm-2 col-form-label">Carga horaria</label>
+						    <div class="col-sm-10">
+						      <input type="number" class="form-control" id="hoursPutC" name="hoursPutC">
+						    </div>
+						  </div>
+						  <fieldset class="form-group">
+						    <div class="row">
+						      <legend class="col-form-label col-sm-10 pt-0">¿Quieres que los alumnos se puedan comunicar entre ellos via email?</legend>
+						      <div class="col-sm-2">
+						        <div class="form-check">
+						          <input class="form-check-input" type="radio" name="studentContactPutC" id="studentContactPutC" value="True" checked>
+						          <label class="form-check-label" for="studentContactPutC">
+						            Si
+						          </label>
+						        </div>
+						        <div class="form-check">
+						          <input class="form-check-input" type="radio" name="studentContactPutC" id="studentContactPutC" value="False">
+						          <label class="form-check-label" for="studentContactPutC">
+						            No
+						          </label>
+						        </div>
+						      </div>
+						    </div>
+						  </fieldset>
+						  <fieldset class="form-group">
+						    <div class="row">
+						      <legend class="col-form-label col-sm-10 pt-0">¿Quieres que los alumnos se puedan comunicar contigo via email?</legend>
+						      <div class="col-sm-2">
+						        <div class="form-check">
+						          <input class="form-check-input" type="radio" name="teacherContactPutC" id="teacherContactPutC" value="True" checked>
+						          <label class="form-check-label" for="teacherContactPutC">
+						            Si
+						          </label>
+						        </div>
+						        <div class="form-check">
+						          <input class="form-check-input" type="radio" name="teacherContactPutC" id="teacherContactPutC" value="False">
+						          <label class="form-check-label" for="teacherContactPutC">
+						            No
+						          </label>
+						        </div>
+						      </div>
+						    </div>
+						  </fieldset>
+						  <div class="form-group row">
+						    <label for="lenguagePutC" class="col-sm-2 col-form-label">Idioma</label>
+						    <div class="col-sm-10">
+						        <select id="lenguagePutC" name="lenguagePutC"class="form-control">
+						          <option selected>Elige...</option>
+						          <option>Español</option>
+						          <option>Ingles</option>
+						          <option>Frances</option>
+						          <option>Portuges</option>
+						          <option>Aleman</option>
+						        </select>
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="emailPutC" class="col-sm-2 col-form-label">Email</label>
+						    <div class="col-sm-10">
+						      <input type="emailPutC" class="form-control" id="emailPutC">
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="stylePutC" class="col-sm-2 col-form-label">Estilo</label>
+						    <div class="col-sm-10">
+						        <select id="stylePutC" name="stylePutC" class="form-control">
+						          <option selected>Elige...</option>
+						          <option>Flamenco</option>
+						          <option>Jazz</option>
+						          <option>Samba</option>
+						          <option>Sartaneio</option>
+						          <option>Copla</option>
+						        </select>
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <div class="col-sm-10">
+						     <input class="btn btn-primary" id="submitPutC" type="button"  value="Actualizar">
+						    </div>
+						  </div>
+						</form>
+
+
+					  </div>
+				      <!-- <div class="tab-pane fade" id="v-pills-videos2" role="tabpanel" aria-labelledby="v-pills-videos2-tab">Videos2</div> -->
+	
+				    </div>
+				  </div>
+				</div>
+		
+			  </div>
+			  <div class="tab-pane fade" id="nav-delete" role="tabpanel" aria-labelledby="nav-delete-tab"><br>
+
+				<div class="row">
+				  <div class="col-3">
+				    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+				      <a class="nav-link active" id="v-pills-details3-tab" data-toggle="pill" href="#v-pills-details3" role="tab" aria-controls="v-pills-details3" aria-selected="true">Detalles</a>
+				     <!-- <a class="nav-link" id="v-pills-videos3-tab" data-toggle="pill" href="#v-pills-videos3" role="tab" aria-controls="v-pills-videos3" aria-selected="false">Videos</a> -->
+				    </div>
+				  </div>
+				  <div class="col-9">
+				    <div class="tab-content" id="v-pills-tabContent">
+				      <div class="tab-pane fade show active" id="v-pills-details3" role="tabpanel" aria-labelledby="v-pills-details3-tab">
+
+						<form>
+						  <div class="form-group row">
+						    <label for="idDelC" class="col-sm-2 col-form-label">Id</label>
+						    <div class="col-sm-10">
+						      <input type="number" class="form-control" id="idDelC" name="idDelC">
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="descriptionDelC" class="col-sm-2 col-form-label">Descripción</label>
+						    <div class="col-sm-10">
+						      <input type="descriptionDelC" class="form-control" id="descriptionDelC" name="descriptionDelC">
+						    </div>
+						  </div>
+
+						  <div class="form-group row">
+						    <label for="instrumentDelC" class="col-sm-2 col-form-label">Instrumento</label>
+						    <div class="col-sm-10">
+						    <select id="instrumentDelC" name="instrumentDelC" class="form-control">
+						          <option selected>Elige...</option>
+						          <option>Guitarra</option>
+						          <option>Bajo</option>
+						          <option>Bateria</option>
+						          <option>Violin</option>
+						        </select>
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="difficultyDelC" class="col-sm-2 col-form-label">Dificultad</label>
+						    <div class="col-sm-10">
+						     <select id="difficultyDelC" name="difficultyDelC" class="form-control">
+						          <option selected>Elige...</option>
+						          <option>N. Experto</option>
+						          <option>N. Alto</option>
+						          <option>N. Medio</option>
+						          <option>N. Bajo</option>
+						          <option>N. Inicio</option>
+						     </select>
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="hoursDelC" class="col-sm-2 col-form-label">Carga horaria</label>
+						    <div class="col-sm-10">
+						      <input type="number" class="form-control" id="hoursDelC" name="hoursDelC">
+						    </div>
+						  </div>
+						  <fieldset class="form-group">
+						    <div class="row">
+						      <legend class="col-form-label col-sm-10 pt-0">¿Quieres que los alumnos se puedan comunicar entre ellos via email?</legend>
+						      <div class="col-sm-2">
+						        <div class="form-check">
+						          <input class="form-check-input" type="radio" name="studentContactDelC" id="studentContactDelC" value="True" checked>
+						          <label class="form-check-label" for="studentContactDelC">
+						            Si
+						          </label>
+						        </div>
+						        <div class="form-check">
+						          <input class="form-check-input" type="radio" name="studentContactDelC" id="studentContactDelC" value="False">
+						          <label class="form-check-label" for="studentContactDelC">
+						            No
+						          </label>
+						        </div>
+						      </div>
+						    </div>
+						  </fieldset>
+						  <fieldset class="form-group">
+						    <div class="row">
+						      <legend class="col-form-label col-sm-10 pt-0">¿Quieres que los alumnos se puedan comunicar contigo via email?</legend>
+						      <div class="col-sm-2">
+						        <div class="form-check">
+						          <input class="form-check-input" type="radio" name="teacherContactDelC" id="teacherContactDelC" value="True" checked>
+						          <label class="form-check-label" for="teacherContactDelC">
+						            Si
+						          </label>
+						        </div>
+						        <div class="form-check">
+						          <input class="form-check-input" type="radio" name="teacherContactDelC" id="teacherContactDelC" value="False">
+						          <label class="form-check-label" for="teacherContactDelC">
+						            No
+						          </label>
+						        </div>
+						      </div>
+						    </div>
+						  </fieldset>
+						  <div class="form-group row">
+						    <label for="lenguageDelC" class="col-sm-2 col-form-label">Idioma</label>
+						    <div class="col-sm-10">
+						        <select id="lenguageDelC" name="lenguageDelC"class="form-control">
+						          <option selected>Elige...</option>
+						          <option>Español</option>
+						          <option>Ingles</option>
+						          <option>Frances</option>
+						          <option>Portuges</option>
+						          <option>Aleman</option>
+						        </select>
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="emailDelC" class="col-sm-2 col-form-label">Email</label>
+						    <div class="col-sm-10">
+						      <input type="emailDelC" class="form-control" id="emailDelC" name="emailDelC">
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="styleDelC" class="col-sm-2 col-form-label">Estilo</label>
+						    <div class="col-sm-10">
+						        <select id="styleDelC" name="styleDelC" class="form-control">
+						          <option selected>Elige...</option>
+						          <option>Flamenco</option>
+						          <option>Jazz</option>
+						          <option>Samba</option>
+						          <option>Sartaneio</option>
+						          <option>Copla</option>
+						        </select>
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <div class="col-sm-10">
+						     <input class="btn btn-primary" id="submitDelC" type="button"  value="Borrar">
+						    </div>
+						  </div>
+						</form>
+
+
+					 </div>
+				      <!--<div class="tab-pane fade" id="v-pills-videos3" role="tabpanel" aria-labelledby="v-pills-videos3-tab">Videos3</div> -->
+	
+				    </div>
+				  </div>
+				</div>
+
+			  </div>
+			</div>
+
+
+		  </div>
+		</div>	
+
+
+	</div>
+    <br> 
+  <!-- FOOTER -->
+  <footer class="container">
+    <p class="float-right"><a href="#">Volver arriba</a></p>
+    <p>&copy; 2017-2020 Company, Inc. &middot; <a href="#">Privacidad</a> &middot; <a href="#">Terminos</a></p>
+  </footer>
+</main>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.2.1.min.js"><\/script>')</script><script src="../js/bootstrap.bundle.js"></script></body>
+</html>

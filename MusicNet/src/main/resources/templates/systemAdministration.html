@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Carousel templet of Mark Otto, Jacob Thornton, and Bootstrap contributors adapted by Jonathan Sierra">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <title>MusicNet</title>
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	    <script type="text/javascript">
+	        $(document).ready(function() {
+	            $('#submitPutM').click(  function () {
+	                console.log("click");
+	                var sendNamePutM = $('#namePutM').val();
+	                var sendDescriptionPutM = $('#descriptionPutM').val();
+	
+	                $.ajax({
+	                    url: '/musicalstyle',    //Your api url
+	                    type: 'PUT',   //type is any HTTP method
+	                    data: {
+	                        name: sendNamePutM,
+	                        description: sendDescriptionPutM,
+	
+	                    },      //Data as js object
+	                    success: function (data) {
+	                    	window.location.reload();
+	                    }
+	                })
+	                ;
+	
+	            });
+	        });
+	    </script>
+	    <script type="text/javascript">
+	        $(document).ready(function() {
+	            $('#submitDelM').click(  function () {
+	                console.log("click");
+	                var sendNameDelM = $('#nameDelM').val();
+	                var sendDescriptionDelM = $('#descriptionDelM').val();
+	
+	                $.ajax({
+	                    url: '/musicalstyle',    //Your api url
+	                    type: 'DELETE',   //type is any HTTP method
+	                    data: {
+	                        name: sendNameDelM,
+	                        description: sendDescriptionDelM,
+	
+	                    },      //Data as js object
+	                    success: function (data) {
+	                    	window.location.reload();
+	                    }
+	                })
+	                ;
+	
+	            });
+	        });
+	    </script>
+	    <script type="text/javascript">
+	        $(document).ready(function() {
+	            $('#submitPutI').click(  function () {
+	                console.log("click");
+	                var sendNamePutI = $('#namePutI').val();
+	                var sendDescriptionPutI = $('#descriptionPutI').val();
+	
+	                $.ajax({
+	                    url: '/instrument',    //Your api url
+	                    type: 'PUT',   //type is any HTTP method
+	                    data: {
+	                        name: sendNamePutI,
+	                        description: sendDescriptionPutI,
+	
+	                    },      //Data as js object
+	                    success: function (data) {
+	                    	window.location.reload();
+	                    }
+	                })
+	                ;
+	
+	            });
+	        });
+	    </script>
+	    <script type="text/javascript">
+	        $(document).ready(function() {
+	            $('#submitDelI').click(  function () {
+	                console.log("click");
+	                var sendNameDelI = $('#nameDelI').val();
+	                var sendDescriptionDelI = $('#descriptionDelI').val();
+	
+	                $.ajax({
+	                    url: '/instrument',    //Your api url
+	                    type: 'DELETE',   //type is any HTTP method
+	                    data: {
+	                        name: sendNameDelI,
+	                        description: sendDescriptionDelI,
+	
+	                    },      //Data as js object
+	                    success: function (data) {
+	                    	window.location.reload();
+	                    }
+	                })
+	                ;
+	
+	            });
+	        });
+	    </script>
+
+
+    <!-- Bootstrap core CSS -->
+<link href="../css/bootstrap.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="../css/carousel.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">MusicNet</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Inicio<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost:8182/musicalstyle">Administración del sistema</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost:8182/course">Cursos</a>
+        </li>
+      </ul>
+      <form class="form-inline mt-2 mt-md-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      </form>
+    </div>
+  </nav>
+</header>
+
+<main role="main">
+   
+    <div class="container">
+    <br>	
+	<div class="row">
+	  <div class="col-3">
+	    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+	      <a class="nav-link active" id="v-pills-styles-tab" data-toggle="pill" href="#v-pills-styles" role="tab" aria-controls="v-pills-styles" aria-selected="true">Estilos musicales</a>
+	      <a class="nav-link" id="v-pills-instruments-tab" data-toggle="pill" href="#v-pills-instruments" role="tab" aria-controls="v-pills-instruments" aria-selected="false">Instrumentos</a>
+	      <a class="nav-link" id="v-pills-metronoms-tab" data-toggle="pill" href="#v-pills-metronoms" role="tab" aria-controls="v-pills-metronoms" aria-selected="false">Metronomos</a>
+	      <a class="nav-link" id="v-pills-backingtracks-tab" data-toggle="pill" href="#v-pills-backingtracks" role="tab" aria-controls="v-pills-backingtracks" aria-selected="false">Bases musicales</a>
+	    </div>
+	  </div>
+	  <div class="col-9">
+	    <div class="tab-content" id="v-pills-tabContent">
+	      <div class="tab-pane fade show active" id="v-pills-styles" role="tabpanel" aria-labelledby="v-pills-styles-tab">
+		  
+			<nav>
+			  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+			    <a class="nav-item nav-link active" id="nav-list-tab" data-toggle="tab" href="#nav-list" role="tab" aria-controls="nav-list" aria-selected="true">Lista</a>
+			    <a class="nav-item nav-link" id="nav-add-tab" data-toggle="tab" href="#nav-add" role="tab" aria-controls="nav-add" aria-selected="false">Añadir</a>
+			    <a class="nav-item nav-link" id="nav-update-tab" data-toggle="tab" href="#nav-update" role="tab" aria-controls="nav-update" aria-selected="false">Actualizar</a>
+			    <a class="nav-item nav-link" id="nav-delete-tab" data-toggle="tab" href="#nav-delete" role="tab" aria-controls="nav-delete" aria-selected="false">Borrar</a>
+			  </div>
+			</nav>
+			<div class="tab-content" id="nav-tabContent">
+			  <br>
+			  <div class="tab-pane fade show active" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
+			  
+						<table class="table">
+						  <thead class="thead-dark">
+				    		<tr>
+				      			<th scope="col">Nombre</th>
+				      			<th scope="col">Descripción</th>
+				    		</tr>
+						  </thead>
+						  <tbody>
+			    			<tr th:each="ms:${styles}">
+			      				<th scope="row" th:text="${ms.name}"></th>
+			      				<td th:text="${ms.description}"></td>
+			    			</tr>
+						  </tbody>
+						</table>
+
+			  </div>
+			  <div class="tab-pane fade" id="nav-add" role="tabpanel" aria-labelledby="nav-add-tab">
+
+						<form th:action="@{/musicalstyle/}" th:object="${style}" method="post" enctype="multipart/form-data">
+						  <div class="form-group row">
+						    <label for="name" class="col-sm-2 col-form-label">Nombre</label>
+						    <div class="col-sm-6">
+						      <input type="text" class="form-control" id="name" th:field="*{name}" name="name">
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="description" class="col-sm-2 col-form-label">Descripción</label>
+						    <div class="col-sm-6">
+						      <input type="text" class="form-control" id="description" th:field="*{description}" name="description">
+						    </div>
+						  </div>
+						 
+						 <button class="btn btn-primary" type="submit">Añadir</button>
+						</form>
+						
+			  </div>
+			  <div class="tab-pane fade" id="nav-update" role="tabpanel" aria-labelledby="nav-update-tab">
+
+			    <form> 
+			      <div class="form-group row">
+			        <label class="col-sm-2 col-form-label" for="namePutM">Nombre</label>
+			        <div class="col-sm-6">
+			          <input class="form-control" type="text" id="namePutM"  />
+			        </div>
+			     </div> 
+			     <div class="form-group row">
+			        <label class="col-sm-2 col-form-label" for="descriptionPutM">Descripción</label>
+			        <div class="col-sm-6">
+			          <input class="form-control" type="text" name="descriptionPutM" id="descriptionPutM"/>
+					</div>     
+			      </div>
+			      <input class="btn btn-primary" id="submitPutM" type="button"  value="Actualizar">    
+			    </form>
+
+			  </div>
+			  <div class="tab-pane fade" id="nav-delete" role="tabpanel" aria-labelledby="nav-delete-tab">
+			  
+			    <form> 
+			      <div class="form-group row">
+			        <label class="col-sm-2 col-form-label" for="nameDelM">Nombre</label>
+			        <div class="col-sm-6">
+			          <input class="form-control" type="text" id="nameDelM"  />
+			        </div>
+			     </div> 
+			     <div class="form-group row">
+			        <label class="col-sm-2 col-form-label" for="descriptionDelM">Descripción</label>
+			        <div class="col-sm-6">
+			          <input class="form-control" type="text" name="descriptionDelM" id="descriptionDelM"/>
+					</div>     
+			      </div>
+			      <input class="btn btn-primary" id="submitDelM" type="button"  value="Borrar">    
+			    </form>	  
+			  
+			  </div>
+			</div>
+		  </div>
+		  
+	      <div class="tab-pane fade" id="v-pills-instruments" role="tabpanel" aria-labelledby="v-pills-instruments-tab">
+
+			<nav>
+			  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+			    <a class="nav-item nav-link active" id="nav-list2-tab" data-toggle="tab" href="#nav-list2" role="tab" aria-controls="nav-list2" aria-selected="true">Lista</a>
+			    <a class="nav-item nav-link" id="nav-add2-tab" data-toggle="tab" href="#nav-add2" role="tab" aria-controls="nav-add2" aria-selected="false">Añadir</a>
+			    <a class="nav-item nav-link" id="nav-update2-tab" data-toggle="tab" href="#nav-update2" role="tab" aria-controls="nav-update2" aria-selected="false">Actualizar</a>
+			    <a class="nav-item nav-link" id="nav-delete2-tab" data-toggle="tab" href="#nav-delete2" role="tab" aria-controls="nav-delete2" aria-selected="false">Borrar</a>
+			  </div>
+			</nav>
+			<div class="tab-content" id="nav-tabContent">
+			  <br>
+			  <div class="tab-pane fade show active" id="nav-list2" role="tabpanel" aria-labelledby="nav-list2-tab">
+
+						<table class="table">
+						  <thead class="thead-dark">
+				    		<tr>
+				      			<th scope="col">Nombre</th>
+				      			<th scope="col">Descripción</th>
+				    		</tr>
+						  </thead>
+						  <tbody>
+			    			<tr th:each="ins:${instruments}">
+			      				<th scope="row" th:text="${ins.name}"></th>
+			      				<td th:text="${ins.description}"></td>
+			    			</tr>
+						  </tbody>
+						</table>
+
+			  </div>
+			  <div class="tab-pane fade" id="nav-add2" role="tabpanel" aria-labelledby="nav-add2-tab">
+
+						<form th:action="@{/instrument/}" th:object="${instrument}" method="post" enctype="multipart/form-data">
+						  <div class="form-group row">
+						    <label for="name" class="col-sm-2 col-form-label">Nombre</label>
+						    <div class="col-sm-6">
+						      <input type="text" class="form-control" id="name" th:field="*{name}" name="name">
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="description" class="col-sm-2 col-form-label">Descripción</label>
+						    <div class="col-sm-6">
+						      <input type="text" class="form-control" id="description" th:field="*{description}" name="description">
+						    </div>
+						  </div>
+						 
+						 <button class="btn btn-primary" type="submit">Añadir</button>
+						</form>
+
+			  </div>
+			  <div class="tab-pane fade" id="nav-update2" role="tabpanel" aria-labelledby="nav-update2-tab">
+
+			    <form> 
+			      <div class="form-group row">
+			        <label class="col-sm-2 col-form-label" for="namePutI">Nombre</label>
+			        <div class="col-sm-6">
+			          <input class="form-control" type="text" id="namePutI"  />
+					</div>
+				  </div>
+				  <div class="form-group row">
+			        <label class="col-sm-2 col-form-label" for="descriptionPutI">Descripción</label>
+			        <div class="col-sm-6">
+			          <input class="form-control" type="text" name="descriptionPutI" id="descriptionPutI"/>
+			         </div>
+			        </div> 
+			        <input class="btn btn-primary" id="submitPutI" type="button"  value="Actualizar">
+			    </form>
+
+			  </div>
+			  <div class="tab-pane fade" id="nav-delete2" role="tabpanel" aria-labelledby="nav-delete2-tab">
+
+			    <form> 
+			      <div class="form-group row">
+			        <label class="col-sm-2 col-form-label" for="nameDelI">Nombre</label>
+			        <div class="col-sm-6">
+			          <input class="form-control" type="text" id="nameDelI"  />
+			        </div>
+			      </div>
+			      <div class="form-group row">
+			        <label class="col-sm-2 col-form-label" for="descriptionDelI">Descripción</label>
+			        <div class="col-sm-6">
+			          <input class="form-control" type="text" name="descriptionDelI" id="descriptionDelI"/>
+			          </div>
+			         </div>
+			        <input class="btn btn-primary" id="submitDelI" type="button"  value="Borrar">
+			    </form>		  
+			  
+			  </div>
+			</div>
+		  </div>
+		  
+	      <div class="tab-pane fade" id="v-pills-metronoms" role="tabpanel" aria-labelledby="v-pills-metronoms-tab">
+
+			<nav>
+			  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+			    <a class="nav-item nav-link active" id="nav-list3-tab" data-toggle="tab" href="#nav-list3" role="tab" aria-controls="nav-list3" aria-selected="true">Lista</a>
+			    <a class="nav-item nav-link" id="nav-add3-tab" data-toggle="tab" href="#nav-add3" role="tab" aria-controls="nav-add3" aria-selected="false">Añadir</a>
+			    <a class="nav-item nav-link" id="nav-update3-tab" data-toggle="tab" href="#nav-update3" role="tab" aria-controls="nav-update3" aria-selected="false">Actualizar</a>
+			    <a class="nav-item nav-link" id="nav-delete3-tab" data-toggle="tab" href="#nav-delete3" role="tab" aria-controls="nav-delete3" aria-selected="false">Borrar</a>
+			  </div>
+			</nav>
+			<div class="tab-content" id="nav-tabContent">
+			  <br>
+			  <div class="tab-pane fade show active" id="nav-list3" role="tabpanel" aria-labelledby="nav-list3-tab">Lista3</div>
+			  <div class="tab-pane fade" id="nav-add3" role="tabpanel" aria-labelledby="nav-add3-tab">Añadir3</div>
+			  <div class="tab-pane fade" id="nav-update3" role="tabpanel" aria-labelledby="nav-update3-tab">Actualizar3</div>
+			  <div class="tab-pane fade" id="nav-delete3" role="tabpanel" aria-labelledby="nav-delete3-tab">Borrar3</div>
+			</div>
+		  </div>
+		  
+	      <div class="tab-pane fade" id="v-pills-backingtracks" role="tabpanel" aria-labelledby="v-pills-backingtracks-tab">
+			<nav>
+			  <div class="nav nav-tabs" id="nav-tab" role="tablist4">
+			    <a class="nav-item nav-link active" id="nav-list-tab4" data-toggle="tab" href="#nav-list4" role="tab" aria-controls="nav-list4" aria-selected="true">Lista</a>
+			    <a class="nav-item nav-link" id="nav-add-tab4" data-toggle="tab" href="#nav-add4" role="tab" aria-controls="nav-add4" aria-selected="false">Añadir</a>
+			    <a class="nav-item nav-link" id="nav-update-tab4" data-toggle="tab" href="#nav-update4" role="tab" aria-controls="nav-update4" aria-selected="false">Actualizar</a>
+			    <a class="nav-item nav-link" id="nav-delete-tab4" data-toggle="tab" href="#nav-delete4" role="tab" aria-controls="nav-delete4" aria-selected="false">Borrar</a>
+			  </div>
+			</nav>
+			<div class="tab-content" id="nav-tabContent">
+			  <br>
+			  <div class="tab-pane fade show active" id="nav-list4" role="tabpanel" aria-labelledby="nav-list4-tab">Lista4</div>
+			  <div class="tab-pane fade" id="nav-add4" role="tabpanel" aria-labelledby="nav-add4-tab">Añadir4</div>
+			  <div class="tab-pane fade" id="nav-update4" role="tabpanel" aria-labelledby="nav-update4-tab">Actualizar4</div>
+			  <div class="tab-pane fade" id="nav-delete4" role="tabpanel" aria-labelledby="nav-delete4-tab">Borrar4</div>
+			</div>
+		  </div>
+	    </div>
+	  </div>
+	</div>	
+	
+	
+	
+	
+	
+	
+	
+	
+	</div>
+
+
+  <br> 
+  <!-- FOOTER -->
+  <footer class="container">
+    <p class="float-right"><a href="#">Volver arriba</a></p>
+    <p>&copy; 2017-2020 Company, Inc. &middot; <a href="#">Privacidad</a> &middot; <a href="#">Terminos</a></p>
+  </footer>
+</main>
+      
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script>window.jQuery || document.write('<script src="../js/jquery.slim.min.js"> <\/script>')</script><script src="../js/bootstrap.bundle.js"></script></body>
+</html>
