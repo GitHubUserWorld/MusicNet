@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -7,90 +7,6 @@
     <meta name="author" content="Carousel templet of Mark Otto, Jacob Thornton, and Bootstrap contributors adapted by Jonathan Sierra">
     <meta name="generator" content="Jekyll v4.0.1">
     <title>MusicNet</title>
-    
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	    <script type="text/javascript">
-	        $(document).ready(function() {
-	            $('#submitPutC').click(  function () {
-	                console.log("click");
-	                var sendIdPutC = $('#idPutC').val();
-	                var sendDescriptionPutC = $('#descriptionPutC').val();
-	                var sendInstrumentPutC = $('#instrumentPutC').val();
-	                var sendDifficultyPutC = $('#difficultyPutC').val();
-	                var sendHoursPutC = $('#hoursPutC').val();
-	                var sendStudentContactPutC = $('#studentContactPutC').val();
-	                var sendTeacherContactPutC = $('#teacherContactPutC').val();
-	                var sendLenguagePutC = $('#lenguagePutC').val();
-	                var sendEmailPutC = $('#emailPutC').val();
-	                var sendStylePutC = $('#stylePutC').val();
-	                
-	                $.ajax({
-	                    url: '/courses',    //Your api url
-	                    type: 'PUT',   //type is any HTTP method
-	                    data: {
-	                    	id: sendIdPutC,
-	                        description: sendDescriptionPutC,
-	                        instrumentname: sendInstrumentPutC,
-	                        difficulty: sendDifficultyPutC,
-	                        hours: sendHoursPutC,
-	                        studentcontact: sendStudentContactPutC,
-	                        teachercontact: sendTeacherContactPutC,
-	                        lenguage: sendLenguagePutC,
-	                        emailaddressteacher: sendEmailPutC,
-	                        stylename: sendStylePutC,
-	                        
-	
-	                    },      //Data as js object
-	                    success: function (data) {
-	                    	window.location.reload();
-	                    }
-	                })
-	                ;
-	
-	            });
-	        });
-	    </script>
-	    <script type="text/javascript">
-	        $(document).ready(function() {
-	            $('#submitDelC').click(  function () {
-	                console.log("click");
-	                var sendIdDelC = $('#idDelC').val();
-	                var sendDescriptionDelC = $('#descriptionDelC').val();
-	                var sendInstrumentDelC = $('#instrumentDelC').val();
-	                var sendDifficultyDelC = $('#difficultyDelC').val();
-	                var sendHoursDelC = $('#hoursDelC').val();
-	                var sendStudentContactDelC = $('#studentContactDelC').val();
-	                var sendTeacherContactDelC = $('#teacherContactDelC').val();
-	                var sendLenguageDelC = $('#lenguageDelC').val();
-	                var sendEmailDelC = $('#emailDelC').val();
-	                var sendStyleDelC = $('#styleDelC').val();
-	                
-	                $.ajax({
-	                    url: '/courses',    //Your api url
-	                    type: 'DELETE',   //type is any HTTP method
-	                    data: {
-	                    	id: sendIdDelC,
-	                        description: sendDescriptionDelC,
-	                        instrumentname: sendInstrumentDelC,
-	                        difficulty: sendDifficultyDelC,
-	                        hours: sendHoursDelC,
-	                        studentcontact: sendStudentContactDelC,
-	                        teachercontact: sendTeacherContactDelC,
-	                        lenguage: sendLenguageDelC,
-	                        emailaddressteacher: sendEmailDelC,
-	                        stylename: sendStyleDelC,
-	                        
-	
-	                    },      //Data as js object
-	                    success: function (data) {
-	                    	window.location.reload();
-	                    }
-	                })
-	                ;
-	
-	            });
-	        });
-	    </script>
 
 
     <!-- Bootstrap core CSS -->
@@ -112,13 +28,16 @@
         }
       }
     </style>
+    
     <!-- Custom styles for this template -->
     <link href="../css/carousel.css" rel="stylesheet">
+    
   </head>
   <body>
+
     <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">MusicNet</a>
+    <a class="navbar-brand" href="/">MusicNet</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -142,6 +61,12 @@
         <li class="nav-item">
           <a class="nav-link" href="/courses">Cursos</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/classrooms">Aulas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shop">Tienda</a>
+        </li>
       </ul>
       <form class="form-inline mt-2 mt-md-0">
         <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Search">
@@ -152,13 +77,14 @@
 </header>
 
 <main role="main">
-   
+
+
     <div class="container">
 		<br>
 		<div class="card">
 		  <h5 class="card-header"><div th:text="${title}"></div></h5>
 		  <div class="card-body">
-		  
+
 			<nav>
 			  <div class="nav nav-tabs" id="nav-tab" role="tablist">
 			    <a class="nav-item nav-link active" id="nav-list-tab" data-toggle="tab" href="#nav-list" role="tab" aria-controls="nav-list" aria-selected="true">Listar</a>
@@ -169,7 +95,8 @@
 			</nav>
 			<div class="tab-content" id="nav-tabContent">
 			  <div class="tab-pane fade show active" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab"><br>
-				<table class="table table-responsive">
+			  
+			  	<table class="table table-responsive">
 				  <thead class="thead-dark">
 					<tr>
 					<th scope="col">Id</th>
@@ -182,6 +109,7 @@
 				    <th scope="col">Idioma</th>
 				    <th scope="col">Estilo</th>
 				    <th scope="col">Email</th>
+				    <th scope="col"></th>
 				  	</tr>
 				  </thead>
 				  <tbody>
@@ -196,29 +124,32 @@
 			      	<td th:text="${co.lenguage}"></td>
 			      	<td th:text="${co.stylename}"></td>
 			      	<td th:text="${co.emailaddressteacher}"></td>
+			      	<td><a id="open-course" th:href="@{/courses/{id}(id=${co.id})}">¡Abrir!</a></td>
+			      	
+			      	
 			    	</tr>
 				  </tbody>
 				</table>
+			  
 			  </div>
 			  <div class="tab-pane fade" id="nav-add" role="tabpanel" aria-labelledby="nav-add-tab"><br>
 
 				<div class="row">
 				  <div class="col-3">
-				    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+				    <div class="nav flex-column nav-pills" id="v-pills1-tab" role="tablist" aria-orientation="vertical">
 				      <a class="nav-link active" id="v-pills-details1-tab" data-toggle="pill" href="#v-pills-details1" role="tab" aria-controls="v-pills-details1" aria-selected="true">Detalles</a>
-				      <a class="nav-link" id="v-pills-videos1-tab" data-toggle="pill" href="#v-pills-videos1" role="tab" aria-controls="v-pills-videos1" aria-selected="false">Videos</a>
-				      <a class="nav-link" id="v-pills-metronom1-tab" data-toggle="pill" href="#v-pills-metronom1" role="tab" aria-controls="v-pills-metronoms1" aria-selected="false">Metronomos</a>
-				      <a class="nav-link" id="v-pills-compastrack1-tab" data-toggle="pill" href="#v-pills-compastrack1" role="tab" aria-controls="v-pills-compastrack1" aria-selected="false">B. ritmicas</a>
-				      <a class="nav-link" id="v-pills-backtrack1-tab" data-toggle="pill" href="#v-pills-backtrack1" role="tab" aria-controls="v-pills-backtrack1" aria-selected="false">B. acompañamiento</a>
+				      <a class="nav-link" id="v-pills-video1-tab" data-toggle="pill" href="#v-pills-videos1" role="tab" aria-controls="v-pills-videos1" aria-selected="false">Videos</a>
+				      <a class="nav-link" id="v-pills-tools1-tab" data-toggle="pill" href="#v-pills-tools1" role="tab" aria-controls="v-pills-tools1" aria-selected="false">Herramientas</a>
+				   
 				    </div>
 				  </div>
 				  <div class="col-9">
-				    <div class="tab-content" id="v-pills-tabContent">
+				    <div class="tab-content" id="v-pills1-tabContent">
 				      <div class="tab-pane fade show active" id="v-pills-details1" role="tabpanel" aria-labelledby="v-pills-details1-tab">
 
 						<form th:action="@{/courses}" th:object="${course}" method="post" enctype="multipart/form-data">
 						  <div class="form-group row">
-						    <label for="id" class="col-sm-2 col-form-label">Id</label>
+						    <label for="id" class="col-sm-2 col-form-label">Id del curso</label>
 						    <div class="col-sm-10">
 						      <input type="number" class="form-control" id="id" name="id">
 						    </div>
@@ -339,48 +270,304 @@
 						</form>
 
 					  </div>
+					  
 				      <div class="tab-pane fade" id="v-pills-videos1" role="tabpanel" aria-labelledby="v-pills-videos1-tab">
 
-
 						<form th:action="@{/files/}" th:object="${filename}" method="post" enctype="multipart/form-data">	
-							<div class="input-group mb-3">
-							  <input type="text" name="file" id="file">
-							  <div class="custom-file">
-							    <input type="file" class="custom-file-input" name="file" id="file">
-							    <label class="custom-file-label" for="file" aria-describedby="inputGroupFileAddon02">Elige archivo</label>
-							  </div>
-							  <div class="input-group-append">
-							    <input class="input-group-text" type="submit" value="Subir" />
-							  </div>
-							</div>
+						  <div class="form-group row">
+						    <label for="id" class="col-sm-2 col-form-label">Id del curso</label>
+						    <div class="col-sm-10">
+						      <input type="number" class="form-control" id="id" name="id">
+						    </div>
+						  </div>
+						
+						  <div class="form-group row">
+						    <label for="file" class="col-sm-2 col-form-label">Archivo</label>
+						    <div class="col-sm-10">
+						      <input type="file" class="custom-file-input" name="file" id="file">
+						      <label class="custom-file-label" for="file" aria-describedby="inputGroupFileAddon02">Elige archivo</label>
+						    </div>
+						  </div>
+						  
+						  <div class="form-group row">
+						    <div class="col-sm-10">
+						     <button class="btn btn-primary" type="submit">Subir</button>
+						    </div>
+						  </div>
 						</form>
 
 					  </div>
-					<div class="tab-pane fade" id="v-pills-metronom1" role="tabpanel" aria-labelledby="v-pills-metronom1-tab">1</div>
-					<div class="tab-pane fade" id="v-pills-compastrack1" role="tabpanel" aria-labelledby="v-pills-compastrack1-tab">2</div>
-					<div class="tab-pane fade" id="v-pills-backtrack1" role="tabpanel" aria-labelledby="v-pills-backtrack1-tab">3</div>	
-					
+					  
+				      <div class="tab-pane fade" id="v-pills-tools1" role="tabpanel" aria-labelledby="v-pills-tools1-tab">
+				      
+				      	<form th:action="@{/courses/tools}" th:object="${tools}" method="post" enctype="multipart/form-data">
+							
+						  <div class="form-group row">
+						    <label for="courseid" class="col-sm-2 col-form-label">Identificador del curso</label>
+						    <div class="col-sm-10">
+						      <input type="number" class="form-control" id="courseid" name="courseid">
+						    </div>
+						  </div>
+							
+							<div class="form-group row">						
+							<label for="metronom1" class="col-sm-2 col-form-label">Metronomo 1</label>
+							  <div class="col-sm-10">
+							  <select  id="metronom1" name="metronom1" class="form-control">
+						  	    <option th:each="met:${metronoms}"
+						  		    th:value="${met.velocity}"
+						  			th:text="${met.velocity}">
+						  		</option>
+						 	</select>
+						 	</div>
+						 	</div>
+						 	
+						 	<div class="form-group row">
+							<label for="metronom2" class="col-sm-2 col-form-label">Metronomo 2</label>
+							  <div class="col-sm-10">
+							  <select  id="metronom2" name="metronom2" class="form-control">
+						  	    <option th:each="met:${metronoms}"
+						  		    th:value="${met.velocity}"
+						  			th:text="${met.velocity}">
+						  		</option>
+						 	</select>
+						 	</div>
+						 	</div>
+						 	
+						 	<div class="form-group row">
+							<label for="metronom3" class="col-sm-2 col-form-label">Metronomo 3</label>
+							  <div class="col-sm-10">
+							  <select  id="metronom3" name="metronom3" class="form-control">
+						  	    <option th:each="met:${metronoms}"
+						  		    th:value="${met.velocity}"
+						  			th:text="${met.velocity}">
+						  		</option>
+						 	</select>
+						 	</div>
+						 	</div>
+						 	
+						 	<div class="form-group row">
+							<label for="metronom4" class="col-sm-2 col-form-label">Metronomo 4</label>
+							  <div class="col-sm-10">
+							  <select  id="metronom4" name="metronom4" class="form-control">
+						  	    <option th:each="met:${metronoms}"
+						  		    th:value="${met.velocity}"
+						  			th:text="${met.velocity}">
+						  		</option>
+						 	</select>
+						 	</div>
+						 	</div>
+						 							 	
+						 	<div class="form-group row">
+							<label for="metronom5" class="col-sm-2 col-form-label">Metronomo 5</label>
+							  <div class="col-sm-10">
+							  <select  id="metronom5" name="metronom5" class="form-control">
+						  	    <option th:each="met:${metronoms}"
+						  		    th:value="${met.velocity}"
+						  			th:text="${met.velocity}">
+						  		</option>
+						 	</select>
+						 	</div>
+						 	</div>
+						 							 	
+						 	<div class="form-group row">
+							<label for="metronom1" class="col-sm-2 col-form-label">Metronomo 6</label>
+							  <div class="col-sm-10">
+							  <select  id="metronom6" name="metronom6" class="form-control">
+						  	    <option th:each="met:${metronoms}"
+						  		    th:value="${met.velocity}"
+						  			th:text="${met.velocity}">
+						  		</option>
+						 	</select>
+						 	</div>
+						 	</div>
+						 							 	
+						 	<div class="form-group row">
+							<label for="metronom1" class="col-sm-2 col-form-label">Metronomo 7</label>
+							  <div class="col-sm-10">
+							  <select  id="metronom7" name="metronom7" class="form-control">
+						  	    <option th:each="met:${metronoms}"
+						  		    th:value="${met.velocity}"
+						  			th:text="${met.velocity}">
+						  		</option>
+						 	</select>
+							</div>
+						 	</div>
+						 						 							 	
+						 	<div class="form-group row">
+							<label for="backingtrackname1" class="col-sm-2 col-form-label">Nombre BackingTrack 1</label>
+							  <div class="col-sm-10">
+							  <select  id=backingtrackname1 name=backingtrackname1  class="form-control">
+						  	    <option th:each="bt:${backingtracks}"
+						  		    th:value="${bt.name}"		  		    
+						  			th:text="${bt.name} + ', ' + ${bt.description}">
+						  		</option>
+						 	</select>
+						    </div>
+						 	</div>		
+						 	
+						 	<div class="form-group row">
+							<label for="backingtrackvelocity1" class="col-sm-2 col-form-label">Velocidad BackingTrack 1</label>
+							  <div class="col-sm-10">
+							  <select  id=backingtrackvelocity1 name=backingtrackvelocity1  class="form-control">
+						  	    <option th:each="bt:${backingtracks}"
+						  		    th:value="${bt.velocity}"		  		    
+						  			th:text="${bt.velocity}">
+						  		</option>
+						 	</select>
+						    </div>
+						 	</div>	
+						 	
+						 	<div class="form-group row">
+							<label for="backingtrackname2" class="col-sm-2 col-form-label">Nombre BackingTrack 2</label>
+							  <div class="col-sm-10">
+							  <select  id=backingtrackname2 name=backingtrackname2  class="form-control">
+						  	    <option th:each="bt:${backingtracks}"
+						  		    th:value="${bt.name}"		  		    
+						  			th:text="${bt.name} + ', ' + ${bt.description}">
+						  		</option>
+						 	</select>
+						    </div>
+						 	</div>		
+						 	
+						 	<div class="form-group row">
+							<label for="backingtrackvelocity2" class="col-sm-2 col-form-label">Velocidad BackingTrack 2</label>
+							  <div class="col-sm-10">
+							  <select  id=backingtrackvelocity2 name=backingtrackvelocity2  class="form-control">
+						  	    <option th:each="bt:${backingtracks}"
+						  		    th:value="${bt.velocity}"		  		    
+						  			th:text="${bt.velocity}">
+						  		</option>
+						 	</select>
+						    </div>
+						 	</div>	
+						 	
+						 	<div class="form-group row">
+							<label for="backingtrackname3" class="col-sm-2 col-form-label">Nombre BackingTrack 3</label>
+							  <div class="col-sm-10">
+							  <select  id=backingtrackname3 name=backingtrackname3  class="form-control">
+						  	    <option th:each="bt:${backingtracks}"
+						  		    th:value="${bt.name}"		  		    
+						  			th:text="${bt.name} + ', ' + ${bt.description}">
+						  		</option>
+						 	</select>
+						    </div>
+						 	</div>		
+						 	
+						 	<div class="form-group row">
+							<label for="backingtrackvelocity3" class="col-sm-2 col-form-label">Velocidad BackingTrack 3</label>
+							  <div class="col-sm-10">
+							  <select  id=backingtrackvelocity3 name=backingtrackvelocity3  class="form-control">
+						  	    <option th:each="bt:${backingtracks}"
+						  		    th:value="${bt.velocity}"		  		    
+						  			th:text="${bt.velocity}">
+						  		</option>
+						 	</select>
+						    </div>
+						 	</div>	
+						 	
+						 	<div class="form-group row">
+							<label for="compastrackname1" class="col-sm-2 col-form-label">Nombre Base de compas 1</label>
+							  <div class="col-sm-10">
+							  <select  id=compastrackname1 name=compastrackname1  class="form-control">
+						  	    <option th:each="ct:${compastracks}"
+						  		    th:value="${ct.name}"		  		    
+						  			th:text="${ct.name} + ', ' + ${ct.description}">
+						  		</option>
+						 	</select>
+						    </div>
+						 	</div>		
+						 	
+						 	<div class="form-group row">
+							<label for="compastrackvelocity1" class="col-sm-2 col-form-label">Velocidad Base de compas 1</label>
+							  <div class="col-sm-10">
+							  <select  id=compastrackvelocity1 name=compastrackvelocity1  class="form-control">
+						  	    <option th:each="ct:${compastracks}"
+						  		    th:value="${ct.velocity}"		  		    
+						  			th:text="${ct.velocity}">
+						  		</option>
+						 	</select>
+						    </div>
+						 	</div>	
+						 	
+						 	<div class="form-group row">
+							<label for="compastrackname2" class="col-sm-2 col-form-label">Nombre Base de compas 2</label>
+							  <div class="col-sm-10">
+							  <select  id=compastrackname2 name=compastrackname2  class="form-control">
+						  	    <option th:each="ct:${compastracks}"
+						  		    th:value="${ct.name}"		  		    
+						  			th:text="${ct.name} + ', ' + ${ct.description}">
+						  		</option>
+						 	</select>
+						    </div>
+						 	</div>		
+						 	
+						 	<div class="form-group row">
+							<label for="compastrackvelocity2" class="col-sm-2 col-form-label">Velocidad Base de compas 2</label>
+							  <div class="col-sm-10">
+							  <select  id=compastrackvelocity2 name=compastrackvelocity2  class="form-control">
+						  	    <option th:each="ct:${compastracks}"
+						  		    th:value="${ct.velocity}"		  		    
+						  			th:text="${ct.velocity}">
+						  		</option>
+						 	</select>
+						    </div>
+						 	</div>	
+						 	
+						 	<div class="form-group row">
+							<label for="compastrackname3" class="col-sm-2 col-form-label">Nombre Base de compas 3</label>
+							  <div class="col-sm-10">
+							  <select  id=compastrackname3 name=compastrackname3  class="form-control">
+						  	    <option th:each="ct:${compastracks}"
+						  		    th:value="${ct.name}"		  		    
+						  			th:text="${ct.name} + ', ' + ${ct.description}">
+						  		</option>
+						 	</select>
+						    </div>
+						 	</div>		
+						 	
+						 	<div class="form-group row">
+							<label for="compastrackvelocity3" class="col-sm-2 col-form-label">Velocidad Base de compas 3</label>
+							  <div class="col-sm-10">
+							  <select  id=compastrackvelocity3 name=compastrackvelocity3  class="form-control">
+						  	    <option th:each="ct:${compastracks}"
+						  		    th:value="${ct.velocity}"		  		    
+						  			th:text="${ct.velocity}">
+						  		</option>
+						 	</select>
+						    </div>
+						 	</div>
+						 	
+						  <div class="form-group row">
+						    <div class="col-sm-10">
+						     <button class="btn btn-primary" type="submit">Configurar</button>
+						    </div>
+						  </div>
+							
+						</form>
+				      
+				      </div>
 				    </div>
 				  </div>
 				</div>
 
-			  </div>
+		  	  </div>
 			  <div class="tab-pane fade" id="nav-update" role="tabpanel" aria-labelledby="nav-update-tab"><br>
 
 				<div class="row">
 				  <div class="col-3">
-				    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+				    <div class="nav flex-column nav-pills" id="v-pills-tab2" role="tablist" aria-orientation="vertical">
 				      <a class="nav-link active" id="v-pills-details2-tab" data-toggle="pill" href="#v-pills-details2" role="tab" aria-controls="v-pills-details2" aria-selected="true">Detalles</a>
-				      <!-- <a class="nav-link" id="v-pills-videos2-tab" data-toggle="pill" href="#v-pills-videos2" role="tab" aria-controls="v-pills-videos2" aria-selected="false">Videos</a> -->
+				      <!-- <a class="nav-link" id="v-pills-videos2-tab" data-toggle="pill" href="#v-pills-videos2" role="tab" aria-controls="v-pills-videos2" aria-selected="false">Videos</a>
+				      <a class="nav-link" id="v-pills-tools2-tab" data-toggle="pill" href="#v-pills-tools2" role="tab" aria-controls="v-pills-tools2" aria-selected="false">Herramientas</a> -->
 				    </div>
 				  </div>
 				  <div class="col-9">
-				    <div class="tab-content" id="v-pills-tabContent">
+				    <div class="tab-content" id="v-pills-tabContent2">
 				      <div class="tab-pane fade show active" id="v-pills-details2" role="tabpanel" aria-labelledby="v-pills-details2-tab">
 
 						<form>
 						  <div class="form-group row">
-						    <label for="idPutC" class="col-sm-2 col-form-label">Id</label>
+						    <label for="idPutC" class="col-sm-2 col-form-label">Id del curso</label>
 						    <div class="col-sm-10">
 						      <input type="number" class="form-control" id="idPutC">
 						    </div>
@@ -400,8 +587,8 @@
 						          <option>Guitarra</option>
 						          <option>Bajo</option>
 						          <option>Bateria</option>
-						          <option>Violin</option>-
-						        </select>
+						          <option>Violin</option>
+						    </select>
 						    </div>
 						  </div>
 						  <div class="form-group row">
@@ -500,39 +687,39 @@
 						  </div>
 						</form>
 
-
 					  </div>
-				      <!-- <div class="tab-pane fade" id="v-pills-videos2" role="tabpanel" aria-labelledby="v-pills-videos2-tab">Videos2</div> -->
-	
+				      <!-- <div class="tab-pane fade" id="v-pills-videos2" role="tabpanel" aria-labelledby="v-pills-videos2-tab">Videos2</div>
+				      <div class="tab-pane fade" id="v-pills-tools2" role="tabpanel" aria-labelledby="v-pills-tools2-tab">Tools2</div> -->
 				    </div>
 				  </div>
 				</div>
-		
+
 			  </div>
 			  <div class="tab-pane fade" id="nav-delete" role="tabpanel" aria-labelledby="nav-delete-tab"><br>
-
+			  
 				<div class="row">
 				  <div class="col-3">
-				    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+				    <div class="nav flex-column nav-pills" id="v-pills-tab3" role="tablist" aria-orientation="vertical">
 				      <a class="nav-link active" id="v-pills-details3-tab" data-toggle="pill" href="#v-pills-details3" role="tab" aria-controls="v-pills-details3" aria-selected="true">Detalles</a>
-				     <!-- <a class="nav-link" id="v-pills-videos3-tab" data-toggle="pill" href="#v-pills-videos3" role="tab" aria-controls="v-pills-videos3" aria-selected="false">Videos</a> -->
+				      <!-- <a class="nav-link" id="v-pills-videos3-tab" data-toggle="pill" href="#v-pills-videos3" role="tab" aria-controls="v-pills-videos3" aria-selected="false">Videos</a>
+				      <a class="nav-link" id="v-pills-tools3-tab" data-toggle="pill" href="#v-pills-tools3" role="tab" aria-controls="v-pills-tools3" aria-selected="false">Herramientas</a> -->
 				    </div>
 				  </div>
 				  <div class="col-9">
-				    <div class="tab-content" id="v-pills-tabContent">
+				    <div class="tab-content" id="v-pills-tabContent3">
 				      <div class="tab-pane fade show active" id="v-pills-details3" role="tabpanel" aria-labelledby="v-pills-details3-tab">
 
 						<form>
 						  <div class="form-group row">
-						    <label for="idDelC" class="col-sm-2 col-form-label">Id</label>
+						    <label for="idDelC" class="col-sm-2 col-form-label">Id del curso</label>
 						    <div class="col-sm-10">
-						      <input type="number" class="form-control" id="idDelC" name="idDelC">
+						      <input type="number" class="form-control" id="idDelC">
 						    </div>
 						  </div>
 						  <div class="form-group row">
 						    <label for="descriptionDelC" class="col-sm-2 col-form-label">Descripción</label>
 						    <div class="col-sm-10">
-						      <input type="descriptionDelC" class="form-control" id="descriptionDelC" name="descriptionDelC">
+						      <input type="descriptionDelC" class="form-control" id="descriptionDelC">
 						    </div>
 						  </div>
 
@@ -545,7 +732,7 @@
 						          <option>Bajo</option>
 						          <option>Bateria</option>
 						          <option>Violin</option>
-						        </select>
+						    </select>
 						    </div>
 						  </div>
 						  <div class="form-group row">
@@ -621,7 +808,7 @@
 						  <div class="form-group row">
 						    <label for="emailDelC" class="col-sm-2 col-form-label">Email</label>
 						    <div class="col-sm-10">
-						      <input type="emailDelC" class="form-control" id="emailDelC" name="emailDelC">
+						      <input type="emailDelC" class="form-control" id="emailDelC">
 						    </div>
 						  </div>
 						  <div class="form-group row">
@@ -644,30 +831,27 @@
 						  </div>
 						</form>
 
-
-					 </div>
-				      <!--<div class="tab-pane fade" id="v-pills-videos3" role="tabpanel" aria-labelledby="v-pills-videos3-tab">Videos3</div> -->
-	
+					  </div>
+				      <!-- <div class="tab-pane fade" id="v-pills-videos3" role="tabpanel" aria-labelledby="v-pills-videos3-tab">Videos3</div>
+				      <div class="tab-pane fade" id="v-pills-tools3" role="tabpanel" aria-labelledby="v-pills-tools3-tab">Tools3</div> -->
 				    </div>
 				  </div>
 				</div>
-
+			  
 			  </div>
 			</div>
 
-
 		  </div>
-		</div>	
-
-
+		</div>
 	</div>
-    <br> 
+
+
   <!-- FOOTER -->
+  <br>
   <footer class="container">
     <p class="float-right"><a href="#">Volver arriba</a></p>
-    <p>&copy; 2017-2020 Company, Inc. &middot; <a href="#">Privacidad</a> &middot; <a href="#">Terminos</a></p>
   </footer>
 </main>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.2.1.min.js"><\/script>')</script><script src="../js/bootstrap.bundle.js"></script></body>
+<script src="../js/jquery-3.5.1.slim.min.js"></script>
+      <script>window.jQuery || document.write('<script src="../js/jquery.slim.min.js"><\/script>')</script><script src="../js/bootstrap.bundle.js"></script></body>
 </html>

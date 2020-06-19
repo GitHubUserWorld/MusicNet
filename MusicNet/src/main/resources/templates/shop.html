@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Carousel templet of Mark Otto, Jacob Thornton, and Bootstrap contributors adapted by Jonathan Sierra">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <title>MusicNet</title>
+
+
+    <!-- Bootstrap core CSS -->
+<link href="../css/bootstrap.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    
+    <!-- Custom styles for this template -->
+    <link href="../css/carousel.css" rel="stylesheet">
+    <link href="../css/pricing.css" rel="stylesheet">
+    
+  </head>
+  <body>
+
+    <header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">MusicNet</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Inicio<span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Administración
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/musicalstyle">Estilos musicales</a>
+            <a class="dropdown-item" href="/instruments">Instrumentos</a>
+            <a class="dropdown-item" href="/metronoms">Metronomos</a>
+            <a class="dropdown-item" href="/compastracks">Bases de compas</a>
+            <a class="dropdown-item" href="/backingtracks">Bases de acompañamiento</a>
+        </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/courses">Cursos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/classrooms">Aulas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shop">Tienda</a>
+        </li>
+      </ul>
+      <form class="form-inline mt-2 mt-md-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      </form>
+    </div>
+  </nav>
+</header>
+
+<main role="main">
+
+
+    <div class="container">
+		<br>
+		<div class="card">
+		  <h5 class="card-header"><div th:text="${title}"></div></h5>
+		  <div class="card-body"></div>
+		<h5><center>Lista de cursos</center></h5>
+		<div class="card" th:each="co:${courses}">
+  		 <div class="card-body">
+    	  <h5 class="card-title"><p>Identificador: <span th:text="${co.id}"></span></p></h5>
+      		<h6 class="card-subtitle mb-2 text-muted" th:text="${co.description}"></h6>
+    		<p class="card-text">Instrumento: <span th:text="${co.instrumentname}"></span></p>
+    		<p class="card-text">Dificultad: <span th:text="${co.difficulty}"></span></p>
+    		<p class="card-text">Carga horaria: <span th:text="${co.hours}"></span></p>
+    		<p class="card-text">¿Puedes contactar con otros alumnos?: <span th:text="${co.studentcontact}"></span></p>
+    		<p class="card-text">¿Puedes contactar con otros el profesor?: <span th:text="${co.teachercontact}"></span></p>
+    		<p class="card-text">Idioma: <span th:text="${co.lenguage}"></span></p>
+    		<p class="card-text">Estilo musical: <span th:text="${co.stylename}"></span></p>
+    		
+    		<a href="#" class="card-link">
+
+				<form action='/charge' method='POST' id='checkout-form'>
+					<input type='hidden' th:value='${co.id}' name='id' />
+				    <input type='hidden' th:value='${amount}' name='amount' />
+				    <!--<label>Price:<span th:text='${amount/100}' /></label> -->
+				    <!-- NOTE: data-key/data-amount/data-currency will be rendered by Thymeleaf -->
+				    <script
+				       src='https://checkout.stripe.com/checkout.js'
+				       class='stripe-button'
+				       th:attr='data-key=${stripePublicKey}, 
+				         data-amount=${amount}, 
+				         data-currency=${currency}'
+				       data-name='MusicNet'
+				       data-description='Comprar curso'
+				       data-locale='es'
+				       data-label='Comprar'>
+				   </script>
+				</form>
+
+			</a>
+  		</div>
+		</div>
+		
+		
+		</div>
+	</div>
+	
+
+
+  <!-- FOOTER -->
+  <br>
+  <footer class="container">
+    <p class="float-right"><a href="#">Volver arriba</a></p>
+  </footer>
+</main>
+<script src="../js/jquery-3.5.1.slim.min.js"></script>
+      <script>window.jQuery || document.write('<script src="../js/jquery.slim.min.js"><\/script>')</script><script src="../js/bootstrap.bundle.js"></script></body>
+</html>

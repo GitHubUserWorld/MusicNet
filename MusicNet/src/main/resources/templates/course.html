@@ -33,7 +33,7 @@
   <body>
     <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">MusicNet</a>
+    <a class="navbar-brand" href="/">MusicNet</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -57,6 +57,12 @@
         <li class="nav-item">
           <a class="nav-link" href="/courses">Cursos</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/classrooms">Aulas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shop">Tienda</a>
+        </li>
       </ul>
       <form class="form-inline mt-2 mt-md-0">
         <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Search">
@@ -72,7 +78,7 @@
 		<br>
 	  
 		<div class="card">
-		  <h5 class="card-header">Curso</h5>
+		  <h5 class="card-header"><div th:text="${title}"></div></h5>
 		  <div class="card-body">
 			<nav>
 			  <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -85,11 +91,12 @@
 			<br>
 			<div class="tab-content" id="nav-tabContent">
 			  <div class="tab-pane fade show active" id="nav-video" role="tabpanel" aria-labelledby="nav-video-tab">
+			  
 			  <div style="inline-block">
 				<table class="table table-responsive">
 				  <thead class="thead-dark">
 					<tr>
-					<!--  --><th scope="col">Id</th>
+					<th scope="col">Id</th>
 					<th scope="col">URL</th>
 				  	</tr>
 				  </thead>
@@ -102,13 +109,62 @@
 				</table>
 				</div>
 
-		
+			  </div>
+			  <div class="tab-pane fade" id="nav-metronom" role="tabpanel" aria-labelledby="nav-metronom-tab"><br>
+
+			  <div style="inline-block">
+				<table class="table table-responsive">
+				  <thead class="thead-dark">
+					<tr>
+					<th scope="col">Metronomo</th>
+				  	</tr>
+				  </thead>
+				  <tbody>
+				  	<tr th:each="mt:${metronoms}">
+			      	<td scope="row"><iframe width="400" height="400" th:src="${mt}"></iframe></td>
+			    	</tr>
+				  </tbody>
+				</table>
+				</div>
+
 
 			  </div>
-			  <div class="tab-pane fade" id="nav-add" role="tabpanel" aria-labelledby="nav-add-tab">...1 </div>
-			  <div class="tab-pane fade" id="nav-metronom" role="tabpanel" aria-labelledby="nav-metronom-tab"><br>...2</div>
-			  <div class="tab-pane fade" id="nav-compastrack" role="tabpanel" aria-labelledby="nav-compastrack-tab"><br>...3</div>
-			  <div class="tab-pane fade" id="nav-backingtrack" role="tabpanel" aria-labelledby="nav-backingtrack-tab"><br>...4</div>
+			  <div class="tab-pane fade" id="nav-compastrack" role="tabpanel" aria-labelledby="nav-compastrack-tab"><br>
+			  
+			  	<div style="inline-block">
+				<table class="table table-responsive">
+				  <thead class="thead-dark">
+					<tr>
+					<th scope="col">Bases de compas</th>
+				  	</tr>
+				  </thead>
+				  <tbody>
+				  	<tr th:each="ct:${compastracks}">
+			      	<td scope="row"><iframe width="400" height="400" th:src="${ct}"></iframe></td>
+			    	</tr>
+				  </tbody>
+				</table>
+				</div>
+			  
+			  </div>
+			  <div class="tab-pane fade" id="nav-backingtrack" role="tabpanel" aria-labelledby="nav-backingtrack-tab"><br>
+
+			  <div style="inline-block">
+				<table class="table table-responsive">
+				  <thead class="thead-dark">
+					<tr>
+					<th scope="col">Bases de acompañamiento</th>
+				  	</tr>
+				  </thead>
+				  <tbody>
+				  	<tr th:each="bt:${backingtracks}">
+			      	<td scope="row"><iframe width="400" height="400" th:src="${bt}"></iframe></td>
+			    	</tr>
+				  </tbody>
+				</table>
+				</div>
+
+			  </div>
 			</div>
 		  </div>
 		</div>
@@ -119,7 +175,6 @@
   <!-- FOOTER -->
   <footer class="container">
     <p class="float-right"><a href="#">Volver arriba</a></p>
-    <p>&copy; 2017-2020 Company, Inc. &middot; <a href="#">Privacidad</a> &middot; <a href="#">Terminos</a></p>
   </footer>
 </main>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

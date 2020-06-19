@@ -141,11 +141,23 @@
         <li class="nav-item active">
           <a class="nav-link" href="index.html">Inicio<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="http://localhost:8182/musicalstyle">Administración del sistema</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Administración
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/musicalstyle">Estilos musicales</a>
+            <a class="dropdown-item" href="/instruments">Instrumentos</a>
+            <a class="dropdown-item" href="/metronoms">Metronomos</a>
+            <a class="dropdown-item" href="/compastracks">Bases de compas</a>
+            <a class="dropdown-item" href="/backingtracks">Bases de acompañamiento</a>
+        </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://localhost:8182/course">Cursos</a>
+          <a class="nav-link" href="/courses">Cursos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shop">Tienda</a>
         </li>
       </ul>
       <form class="form-inline mt-2 mt-md-0">
